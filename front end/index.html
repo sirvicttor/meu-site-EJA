@@ -7,14 +7,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="contador">
-    <h1>Contador de cliques</h1>
-    <p id="valor" aria-live="polite">0</p>
+  <main class="contador" aria-labelledby="titulo">
+    <header class="cabecalho">
+      <div class="identidade">
+        <span class="indicador" aria-hidden="true"></span>
+        <span class="identidade-texto">PAINEL DE INTERAÇÃO</span>
+      </div>
+      <span class="estado">SISTEMA ATIVO</span>
+    </header>
+
+    <section class="visor" aria-label="Contador de cliques">
+      <h1 id="titulo">Contador de cliques</h1>
+      <p class="legenda">TOTAL DE INTERAÇÕES</p>
+      <p id="valor" aria-live="polite">0</p>
+      <p class="dica">Atualizado em tempo real</p>
+    </section>
+
     <div class="botoes">
-      <button id="diminuir" type="button">Diminuir</button>
-      <button id="adicionar" type="button">Clique aqui!</button>
+      <button id="diminuir" type="button">− <span>Diminuir</span></button>
+      <button id="adicionar" type="button">+ <span>Adicionar clique</span></button>
       <button id="zerar" type="button">Zerar</button>
     </div>
+
+    <footer class="rodape">
+      <span>INTERFACE DE TESTE</span>
+      <span>V 1.0</span>
+    </footer>
   </main>
   <script src="script.js"></script>
 </body>

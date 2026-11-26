@@ -2,69 +2,231 @@
   box-sizing: border-box;
 }
 
+:root {
+  color-scheme: dark;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #070b14;
+  color: #edf5ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
 body {
   min-height: 100vh;
   margin: 0;
   display: grid;
   place-items: center;
   padding: 24px;
-  background: #f1f5f9;
-  color: #172033;
-  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(20 78 117 / 28%), transparent 55%),
+    linear-gradient(rgb(33 66 91 / 12%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(33 66 91 / 12%) 1px, transparent 1px),
+    #070b14;
+  background-size: auto, 40px 40px, 40px 40px, auto;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 20%, #070b14 100%);
+  content: "";
+  pointer-events: none;
 }
 
 .contador {
+  position: relative;
   width: min(100%, 440px);
-  padding: 36px 28px;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 12px 32px rgb(23 32 51 / 12%);
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid #26384b;
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgb(17 27 42 / 98%), rgb(10 16 28 / 98%));
+  box-shadow:
+    0 28px 80px rgb(0 0 0 / 48%),
+    0 0 48px rgb(14 165 233 / 9%),
+    inset 0 1px rgb(255 255 255 / 5%);
+}
+
+.contador::before {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 96px;
+  height: 2px;
+  background: #22d3ee;
+  box-shadow: 0 0 16px rgb(34 211 238 / 80%);
+  content: "";
+}
+
+.cabecalho,
+.identidade,
+.rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cabecalho {
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #243246;
+}
+
+.identidade {
+  justify-content: flex-start;
+  gap: 9px;
+}
+
+.identidade-texto,
+.estado,
+.legenda,
+.rodape {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.identidade-texto {
+  color: #a7bad0;
+}
+
+.indicador {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 12px rgb(52 211 153 / 80%);
+}
+
+.estado {
+  color: #5ee0ae;
+  white-space: nowrap;
+}
+
+.visor {
+  padding: 34px 0 30px;
   text-align: center;
 }
 
 h1 {
-  margin: 0 0 16px;
-  font-size: 1.8rem;
+  margin: 0 0 26px;
+  color: #f3f8ff;
+  font-size: clamp(1.45rem, 6vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.legenda {
+  margin: 0 0 8px;
+  color: #8195ac;
 }
 
 #valor {
-  margin: 0 0 24px;
-  color: #2563eb;
-  font-size: 4rem;
+  margin: 0;
+  color: #67e8f9;
+  font-size: clamp(4.5rem, 20vw, 6.5rem);
+  font-variant-numeric: tabular-nums;
   font-weight: 700;
+  line-height: 1.1;
+  text-shadow: 0 0 32px rgb(34 211 238 / 28%);
+}
+
+.dica {
+  margin: 12px 0 0;
+  color: #6f839b;
+  font-size: 0.82rem;
 }
 
 .botoes {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
+  gap: 9px;
+  padding-top: 20px;
+  border-top: 1px solid #243246;
 }
 
 button {
+  flex: 1 1 auto;
   min-height: 44px;
-  padding: 10px 16px;
-  border: 0;
-  border-radius: 8px;
-  background: #2563eb;
+  padding: 10px 14px;
+  border: 1px solid #30445a;
+  border-radius: 9px;
+  background: #172438;
   color: #fff;
   cursor: pointer;
-  font-size: 1rem;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
 button:hover {
-  background: #1d4ed8;
+  transform: translateY(-2px);
+  border-color: #4b6986;
+  background: #20324a;
 }
 
 button:focus-visible {
-  outline: 3px solid #93c5fd;
+  outline: 2px solid #67e8f9;
   outline-offset: 3px;
 }
 
+#adicionar {
+  border-color: #0891b2;
+  background: linear-gradient(135deg, #0891b2, #0e7490);
+  box-shadow: 0 0 18px rgb(8 145 178 / 18%);
+}
+
+#adicionar:hover {
+  border-color: #22d3ee;
+  background: linear-gradient(135deg, #06a6c8, #0e849f);
+}
+
+#adicionar:first-letter,
+#diminuir:first-letter {
+  color: #a5f3fc;
+  font-size: 1.15rem;
+}
+
 #zerar {
-  background: #64748b;
+  flex: 0 0 auto;
+  color: #a7bad0;
 }
 
 #zerar:hover {
-  background: #475569;
+  color: #fff;
+}
+
+.rodape {
+  margin-top: 22px;
+  color: #62758c;
+  font-size: 0.6rem;
+}
+
+@media (max-width: 380px) {
+  .contador {
+    padding: 20px;
+  }
+
+  .identidade-texto,
+  .estado {
+    font-size: 0.58rem;
+  }
+
+  .botoes button {
+    flex-basis: 100%;
+  }
+
+  #zerar {
+    flex-basis: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
